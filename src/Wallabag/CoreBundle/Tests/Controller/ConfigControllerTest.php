@@ -262,7 +262,7 @@ class ConfigControllerTest extends WallabagCoreTestCase
                     'new_user[email]' => '',
                 ),
                 'This value should not be blank.',
-            ),/*
+            ),
             array(
                 array(
                     'new_user[username]' => 'ad',
@@ -294,7 +294,7 @@ class ConfigControllerTest extends WallabagCoreTestCase
                     'new_user[email]' => 'wallace@wallace.me',
                 ),
                 'This value is already used',
-            ),*/
+            ),
         );
     }
 
