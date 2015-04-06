@@ -31,9 +31,7 @@ install:
 
 # build coverage only on one build, to speed up results feedbacks
 before_script:
-    - php -i | grep max_execution_time
-    - if [[ "$TRAVIS_PHP_VERSION" = "5.6" ]]; then PHPUNIT_FLAGS="-d max_execution_time=0 --coverage-clover=coverage.clover"; else PHPUNIT_FLAGS=""; fi;
-    - php -i | grep max_execution_time
+    - if [[ "$TRAVIS_PHP_VERSION" = "5.6" ]]; then PHPUNIT_FLAGS="--process-isolation --coverage-clover=coverage.clover"; else PHPUNIT_FLAGS=""; fi;
 
 script:
     - ant prepare
@@ -41,7 +39,6 @@ script:
 
 after_script:
     - |
-        if [ $TRAVIS_PHP_VERSION = '5.6' ]; then
         if [ $TRAVIS_PHP_VERSION = '5.6' ]; then
             wget https://scrutinizer-ci.com/ocular.phar
             php ocular.phar code-coverage:upload --format=php-clover coverage.clover
